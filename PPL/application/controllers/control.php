@@ -28,6 +28,9 @@ class Control extends CI_Controller {
     $this->load->view('berita', $data);
   }
  
-  
+  public function login(){
+    $data['t_uas11189'] = $this->Model->view();
+    $this->load->view('login', $data);
+  }
 
 }
