@@ -1,0 +1,13 @@
+gmail :
+gamechallengecafe@gmail.com
+asukabehakuorak
+
+django superuser :
+admin
+gamechallengecafe@gmail.com
+asukabehakuorak
+
+Team 
+sentinels
+asukabehakuorak
+

@@ -1,0 +1,27 @@
+{% include 'index.html' %}
+
+{% block content %}
+<div class="container">   
+    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+        <form action="{% url 'signup' %}"  method="POST">        
+   
+                <table class="center">
+                    {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                            <div class="alert alert-success">{{ message }}</div>
+                        {% else %}
+                            <div class="alert alert-danger">{{ message }}</div>
+                        {% endif %}
+                    {% endfor %}
+                    <h3>Sign Up</h3>
+                    {% csrf_token %}
+
+                    {{form.as_p}}
+                </table>              
+
+                <button  type="submit">Signup</button>
+
+        </form>
+    </div>
+</div>
+{% endblock %}
