@@ -8,6 +8,7 @@ from gamechallenge.models import User
 # from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
+from gamechallenge.forms import FormChallenge
 
 def signup(request):
     if request.POST:
@@ -64,4 +65,11 @@ def login(request):
 @login_required(login_url=settings.LOGIN_URL)
 def uploadGame(request):
     return render(request, 'uploadGame.html')
+
+def uploadChallenge(request):
+    form=FormChallenge()
+    context={
+        'form':form,
+    }
+    return render(request, 'upload-challenge.html', context)
 # Create your views here.

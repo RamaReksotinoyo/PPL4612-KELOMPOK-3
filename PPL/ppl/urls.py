@@ -31,5 +31,6 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('signout/', LogoutView.as_view(next_page='login'), name='signout'),
     path('signup/', signup, name='signup'),
-    path('uploadGame/', uploadGame, name='uploadGame')
+    path('uploadGame/', uploadGame, name='uploadGame'),
+    path('upload-challenge/', uploadChallenge, name='upload-challenge')
 ]

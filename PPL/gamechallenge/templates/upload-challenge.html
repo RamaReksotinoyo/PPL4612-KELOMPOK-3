@@ -1,0 +1,31 @@
+{% include 'index.html' %}
+
+{% block content %}
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form action="" method="post">
+                {{form.as_p}}
+            </form>
+        </div>
+    </div>
+</div> -->
+
+<section class="page-section clearfix">
+    <div class="container">
+        <table class="center">
+            
+            <th><div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper">Upload</span>
+                </h2>
+                {{form.as_p}}
+                <div class="btn btn-primary">Upload</div>
+            </div></th>
+
+        </table> 
+    </div>
+</section>
+
+{% endblock %}
