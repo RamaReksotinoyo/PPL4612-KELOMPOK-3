@@ -20,6 +20,11 @@
                 <h2 class="section-heading mb-4">
                     <span class="section-heading-upper">Upload</span>
                 </h2>
+                {% if pesan %}
+                    <div class="alert alert-success">{{ pesan }}</div>
+                {% endif %}
+                {% csrf_token %}
+
                 {{form.as_p}}
                 <div class="btn btn-primary">Upload</div>
             </div></th>

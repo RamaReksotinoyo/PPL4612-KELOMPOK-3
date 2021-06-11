@@ -9,6 +9,7 @@ from gamechallenge.models import User
 from django.conf import settings
 from django.template.loader import render_to_string
 from gamechallenge.forms import FormChallenge
+from django.contrib.auth.models import User
 
 def signup(request):
     if request.POST:
@@ -66,10 +67,24 @@ def login(request):
 def uploadGame(request):
     return render(request, 'uploadGame.html')
 
+@login_required(login_url=settings.LOGIN_URL)
 def uploadChallenge(request):
-    form=FormChallenge()
-    context={
-        'form':form,
-    }
+    if request.POST:
+        form = FormChallenge(request.POST)
+        if form.is_valid():
+            form.save()
+            form = FormChallenge()
+            pesan = "Data berhasil disimpan"
+
+            context = {
+                'form': form,
+                'pesan': pesan,
+            }
+            return render(request, 'upload-challenge.html', context)
+    else:
+        form=FormChallenge()
+        context={
+            'form':form,
+        }
     return render(request, 'upload-challenge.html', context)
 # Create your views here.
