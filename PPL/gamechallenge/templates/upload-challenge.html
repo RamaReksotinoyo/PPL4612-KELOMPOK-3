@@ -2,35 +2,44 @@
 
 {% block content %}
 
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <form action="" method="post">
-                {{form.as_p}}
-            </form>
-        </div>
-    </div>
-</div> -->
 
-<section class="page-section clearfix">
-    <div class="container">
-        <table class="center">
-            
-            <th><div class="intro-text left-0 text-center bg-faded p-5 rounded">
-                <h2 class="section-heading mb-4">
-                    <span class="section-heading-upper">Upload</span>
-                </h2>
-                {% if pesan %}
-                    <div class="alert alert-success">{{ pesan }}</div>
-                {% endif %}
+<!-- <div class="container">
+    <table class="center">    
+        <th><div class="intro-text left-0 text-center bg-faded p-5 rounded">
+            <h2 class="section-heading mb-4">
+                <span class="section-heading-upper">Upload</span>
+            </h2>
+            {% if pesan %}
+                <div class="alert alert-success">{{ pesan }}</div>
+            {% endif %}
+            <form action="{% url 'upload-challenge' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 {{form.as_p}}
                 <div class="btn btn-primary">Upload</div>
-            </div></th>
+            </form>
+        </div></th>
+    </table> 
+</div> -->
 
-        </table> 
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Upload Challenge</h3>
+        
+        {% if pesan %}
+          <div class="alert alert-success">{{ pesan }}</div>
+        {% endif %}
+        
+        <form action="{% url 'upload-challenge' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+  
+          {{ form.as_p }}
+        
+          <button class="btn btn-primary">Tambah Buku</button>
+        </form>
+      </div>
     </div>
-</section>
+  </div>
 
 {% endblock %}
