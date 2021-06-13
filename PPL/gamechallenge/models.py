@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import escape
 
 class User(models.Model):
     email=models.EmailField(max_length=38)
@@ -19,6 +20,12 @@ class Challenge(models.Model):
     nama = models.CharField(max_length=20)
     nama_challenge = models.CharField(max_length=20)
     jenis_id = models.ForeignKey(JenisChallenge, on_delete=models.CASCADE, null=True)
+    gamber = models.ImageField(upload_to='cover/', null=True)
+
+    def image_tag(self):
+        return u'<img src="%s" />'  #escape(<URL to the image>)
+    image_tag.short_description = 'gamber'
+    image_tag.allow_tags = True
 
     def __str__(self):
         return self.nama

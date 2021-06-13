@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from gamechallenge.views import *
 from django.contrib.auth.views import LoginView, LogoutView
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -34,3 +35,6 @@ urlpatterns = [
     path('uploadGame/', uploadGame, name='uploadGame'),
     path('upload-challenge/', uploadChallenge, name='upload-challenge')
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

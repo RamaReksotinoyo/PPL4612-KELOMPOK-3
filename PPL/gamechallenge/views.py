@@ -70,7 +70,7 @@ def uploadGame(request):
 @login_required(login_url=settings.LOGIN_URL)
 def uploadChallenge(request):
     if request.POST:
-        form = FormChallenge(request.POST)
+        form = FormChallenge(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             form = FormChallenge()
