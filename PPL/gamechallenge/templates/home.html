@@ -1,60 +1,127 @@
 {% include 'index.html' %}
 
 {% block content %}
-    <section class="page-section clearfix">
-        <div class="container">
-            <table class="center">
-                
-                <th><div class="intro-text left-0 text-center bg-faded p-5 rounded">
-                    <h2 class="section-heading mb-4">
-                        <span class="section-heading-upper">Upload</span>
-                        {% if user.is_authenticated %}
-                            <span class="section-heading-lower">Hey {{ user }}, is the challenge over?</span>
-                        {% endif %}
-                    </h2>
+    {% if request.user.is_staff %}
+        <h1>admin</h1>
+        <br>
 
-                    <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="/upload-challenge">Upload</a></div>
-                </div></th>
-            </table> 
-        </div>
-    </section>
-
-
-    <section class="page-section cta">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9 mx-auto">
-                    <table class="center">
-                    <th><div class="cta-inner bg-faded text-center rounded">
-                        <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">here</span>
-                            <span class="section-heading-lower">sponsor</span>
-                        </h2>
-                        
-                    </div></th>
-
-                    <th><div class="cta-inner bg-faded text-center rounded">
-                        <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">here</span>
-                            <span class="section-heading-lower">sponsor</span>
-                        </h2>
-                        
-                    </div></th>
-
-                    <td><div class="cta-inner bg-faded text-center rounded">
-                        <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">here</span>
-                            <span class="section-heading-lower">sponsor</span>
-                        </h2>
-                        
-                    </div></td>
-
-                    </table>
-
+        <div class="row">
+            <div class="col-md">
+                <div class="card card-body">
+                    <h5>Customer:</h5>
+                    <hr>
+                    <a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a>
+                    <a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Customer</a>
+        
+                </div>
+            </div>
+        
+            <div class="col-md">
+                <div class="card card-body">
+                    <h5>Contact Information</h5>
+                    <hr>
+                    <p>Email: </p>
+                    <p>Phone: </p>
+                </div>
+            </div>
+        
+            <div class="col-md">
+                <div class="card card-body">
+                    <h5>Total Orders</h5>
+                    <hr>
+                    <h1 style="text-align: center;padding: 10px"></h1>
                 </div>
             </div>
         </div>
-    </section>
+        
+        
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="card card-body">
+                    <form method="get">
+        
+                    <button class="btn btn-primary" type="submit">Search</button>
+                  </form>
+                </div>
+            </div>
+            
+        </div>
+        <br>
+        
+        <div class="row">
+            <div class="col-md">
+                <div class="card card-body">
+                    <table class="table table-sm">
+                        <tr>
+                            <th>User</th>
+                            <th>Nama Challenge</th>
+                            <th>Jenis Challenge</th>
+                            <th>Gambar</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <section class="page-section clearfix">
+            <div class="container">
+                <table class="center">
+                    
+                    <th><div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper">Upload</span>
+                            {% if user.is_authenticated %}
+                                <span class="section-heading-lower">Hey {{ user }}, is the challenge over?</span>
+                            {% endif %}
+                        </h2>
+
+                        <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="/upload-challenge">Upload</a></div>
+                    </div></th>
+                </table> 
+            </div>
+        </section>
+
+        <section class="page-section cta">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <table class="center">
+                        <th><div class="cta-inner bg-faded text-center rounded">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">here</span>
+                                <span class="section-heading-lower">sponsor</span>
+                            </h2>
+                            
+                        </div></th>
+    
+                        <th><div class="cta-inner bg-faded text-center rounded">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">here</span>
+                                <span class="section-heading-lower">sponsor</span>
+                            </h2>
+                            
+                        </div></th>
+    
+                        <td><div class="cta-inner bg-faded text-center rounded">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">here</span>
+                                <span class="section-heading-lower">sponsor</span>
+                            </h2>
+                            
+                        </div></td>
+    
+                        </table>
+    
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {% endif %}
+
+    <br>
+
 {% endblock %}
 <footer class="footer text-faded text-center py-5">
     <div class="container"><p class="m-0 small">gamechallengecafe@gmail.com</p></div>

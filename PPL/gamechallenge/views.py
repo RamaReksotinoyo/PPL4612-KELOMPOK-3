@@ -9,8 +9,10 @@ from gamechallenge.models import User
 from django.conf import settings
 from django.template.loader import render_to_string
 from gamechallenge.forms import FormChallenge
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
+from .decorators import unauthenticated_user, allowed_users, admin_only
 
+@unauthenticated_user
 def signup(request):
     if request.POST:
         form = UserCreationForm(request.POST)
@@ -21,7 +23,9 @@ def signup(request):
         #     ['ramareksotinoyo@gmail.com']
         #     )
         if form.is_valid():
-            form.save()
+            user = form.save()
+            group = Group.objects.get(name='user')
+            user.groups.add(group)
             messages.success(request, "User berhasil dibuat!")
             # email.fail_silently=False
             # email.send()
@@ -44,6 +48,7 @@ def current_datetime(request):
 def index(request):
     return render(request, 'index.html')
 
+# @allowed_users(allowed_roles=['admin'])
 def home(request):
     return render(request, 'home.html')
 
@@ -60,6 +65,7 @@ def peringkat(request):
 def berita(request):
     return render(request, 'berita.html')
 
+@unauthenticated_user
 def login(request):
     return render(request, 'login.html') 
 
