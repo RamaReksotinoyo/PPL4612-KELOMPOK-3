@@ -16,7 +16,12 @@
                     <h3>Sign Up</h3>
                     {% csrf_token %}
 
-                    {{form.as_p}}
+                    <!-- {{form.as_p}} -->
+                    {% for field in form %}
+                        {{field.label}}
+                        {{field}}
+                        <br>
+                    {% endfor %}    
                 </table>              
 
                 <button  type="submit">Signup</button>
