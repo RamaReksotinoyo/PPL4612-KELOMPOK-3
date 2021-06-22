@@ -4,7 +4,7 @@ import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
-from gamechallenge.models import User
+from gamechallenge.models import User, Challenge
 # from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -50,7 +50,13 @@ def index(request):
 
 # @allowed_users(allowed_roles=['admin'])
 def home(request):
-    return render(request, 'home.html')
+    challenge = Challenge.objects.all()
+    total=challenge.count()
+    context={
+        'challenges':challenge,
+        'total':total
+    }
+    return render(request, 'home.html', context)
 
 def jadwal(request):
     return render(request, 'jadwal.html')
@@ -93,4 +99,28 @@ def uploadChallenge(request):
             'form':form,
         }
     return render(request, 'upload-challenge.html', context)
+
+@login_required(login_url=settings.LOGIN_URL)
+def tambahChallenge(request):
+    if request.POST:
+        form = FormChallenge(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            form = FormChallenge()
+            pesan = "Data berhasil disimpan"
+
+            context = {
+                'form': form,
+                'pesan': pesan,
+            }
+            return render(request, 'tambah-challenge.html', context)
+    else:
+        form = FormChallenge()
+
+        context = {
+            'form': form,
+        }
+
+    return render(request, 'tambah-challenge.html', context)
+
 # Create your views here.

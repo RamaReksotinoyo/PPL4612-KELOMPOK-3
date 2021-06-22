@@ -33,7 +33,8 @@ urlpatterns = [
     path('signout/', LogoutView.as_view(next_page='login'), name='signout'),
     path('signup/', signup, name='signup'),
     path('uploadGame/', uploadGame, name='uploadGame'),
-    path('upload-challenge/', uploadChallenge, name='upload-challenge')
+    path('upload-challenge/', uploadChallenge, name='upload-challenge'),
+    path('tambah-challenge/', tambahChallenge, name='tambah-challenge')
 ]
 
 if settings.DEBUG:
