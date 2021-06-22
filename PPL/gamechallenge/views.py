@@ -11,6 +11,7 @@ from django.template.loader import render_to_string
 from gamechallenge.forms import FormChallenge
 from django.contrib.auth.models import User, Group
 from .decorators import unauthenticated_user, allowed_users, admin_only
+from gamechallenge.resuorces import ChallengeResources
 
 @unauthenticated_user
 def signup(request):
@@ -62,9 +63,9 @@ def jadwal(request):
     return render(request, 'jadwal.html')
 
 def peringkat(request):
-    users=User.objects.all()
+    challenge=Challenge.objects.all()
     context={
-        'users':users
+        'challenges':challenge
     }
     return render(request, 'peringkat.html', context)
 
@@ -122,5 +123,20 @@ def tambahChallenge(request):
         }
 
     return render(request, 'tambah-challenge.html', context)
+
+@login_required(login_url=settings.LOGIN_URL)
+def hapus_challenge(request, id_challenge):
+    challenge = Challenge.objects.filter(id=id_challenge)
+    challenge.delete()
+
+    return redirect('home')
+
+@login_required(login_url=settings.LOGIN_URL)
+def export_xls(request):
+    challenge = ChallengeResources()
+    dataset = challenge.export()
+    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="laporan challenge.xls"'
+    return response
 
 # Create your views here.

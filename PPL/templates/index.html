@@ -17,13 +17,41 @@
         <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     </head>
     <body id="bg" style="background-image: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('{% static 'images/bg.jpg' %}');">
+        {% if request.user.is_staff %}
+        <header>
+            <h1 class="site-heading text-center text-faded d-none d-lg-block">
+                
+                <span class="site-heading-lower">Admin Dashboard</span>
+            </h1>
+        </header>
+        {% else %}
         <header>
             <h1 class="site-heading text-center text-faded d-none d-lg-block">
                 
                 <span class="site-heading-lower">CAFE GAME CHALLENGE</span>
             </h1>
         </header>
+        {% endif %}
+
         <!-- Navigation-->
+
+        {% if request.user.is_staff %}
+        <nav class="navbar navbar-expand-lg navbar-dark py-lg-4 " id="mainNav">
+            <div class="container">
+                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.php">Start Bootstrap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+
+                        {% if user.is_authenticated %}
+                            <li class="nav-item px-lg-4 "><a class="nav-link text-uppercase" >{{ user }}</a></li>
+                            <li><a class="nav-link text-uppercase" href="{% url 'signout' %}" >keluar</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% else %}
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
             <div class="container">
                 <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.php">Start Bootstrap</a>
@@ -44,6 +72,8 @@
                 </div>
             </div>
         </nav>
+        {% endif %}
+        
 
         {% block content %}
         {% endblock %}

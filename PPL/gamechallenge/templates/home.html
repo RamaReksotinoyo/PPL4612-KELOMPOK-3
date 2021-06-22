@@ -2,7 +2,6 @@
 
 {% block content %}
     {% if request.user.is_staff %}
-        <h1>admin</h1>
         <br>
 
         <div class="row">
@@ -30,6 +29,7 @@
                     <hr>
 
                     <h1 style="text-align: center;padding: 10px">{{ total }}</h1>
+                    <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'export_xls' %}">Export xls</a>
                 </div>
             </div>
         </div>
@@ -58,6 +58,7 @@
                             <th>Nama Challenge</th>
                             <th>Jenis Challenge</th>
                             <th>Gambar</th>
+                            <th>Action</th>
                         </tr>
                         {% for challenge in challenges %}
                             <tr>
@@ -70,7 +71,8 @@
                                     {% endif %}
                                 </th>
                                 <th>
-                                    <button data-toggle="modal" data-target="#hapus-{{ challenge.id }}" class="btn btn-danger">Hapus</button>
+                                    <!-- <button data-toggle="modal" data-target="#hapus-{{ challenge.id }}" class="btn btn-danger">Hapus</button> -->
+                                    <a href="{% url 'hapus_challenge' challenge.id %}" class="btn btn-danger" >Hapus</a>
                                 </th>
                             </tr>
                         {% endfor %}
