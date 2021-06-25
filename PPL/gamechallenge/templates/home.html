@@ -10,18 +10,18 @@
                     <h5>Challenge:</h5>
                     <hr>
                     <a class="btn btn-outline-success  btn-sm btn-block" href="/tambah-challenge">Add</a>
-                    <a class="btn btn-outline-info  btn-sm btn-block" href="">Update</a>
+                    <a class="btn btn-outline-info  btn-sm btn-block" href="/edit_challenge">Update</a>
                 </div>
             </div>
         
-            <div class="col-md">
+            <!-- <div class="col-md">
                 <div class="card card-body">
                     <h5>Contact Information</h5>
                     <hr>
                     <p>Email: </p>
                     <p>Phone: </p>
                 </div>
-            </div>
+            </div> -->
         
             <div class="col-md">
                 <div class="card card-body">
@@ -36,7 +36,7 @@
         
         
         <br>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col">
                 <div class="card card-body">
                     <form method="get">
@@ -47,7 +47,7 @@
             </div>
             
         </div>
-        <br>
+        <br> -->
         
         <div class="row">
             <div class="col-md">
@@ -63,7 +63,8 @@
                         {% for challenge in challenges %}
                             <tr>
                                 <th>{{ challenge.nama }}</th>
-                                <th>{{ challenge.nama_challenge }}</th>
+                                <th><a href="{% url 'ubah_challenge' challenge.id %}">{{ challenge.nama_challenge }}</a></th>
+                                <!-- <th>{{ challenge.nama_challenge }}</th> -->
                                 <th>{{ challenge.jenis_id }}</th>
                                 <th>
                                     {% if challenge.gambar %}

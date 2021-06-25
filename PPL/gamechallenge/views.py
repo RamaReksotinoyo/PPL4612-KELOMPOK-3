@@ -12,6 +12,7 @@ from gamechallenge.forms import FormChallenge
 from django.contrib.auth.models import User, Group
 from .decorators import unauthenticated_user, allowed_users, admin_only
 from gamechallenge.resuorces import ChallengeResources
+from django.contrib import messages
 
 @unauthenticated_user
 def signup(request):
@@ -129,7 +130,7 @@ def hapus_challenge(request, id_challenge):
     challenge = Challenge.objects.filter(id=id_challenge)
     challenge.delete()
 
-    return redirect('home')
+    return redirect('home')    
 
 @login_required(login_url=settings.LOGIN_URL)
 def export_xls(request):
@@ -138,5 +139,23 @@ def export_xls(request):
     response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="laporan challenge.xls"'
     return response
+
+@login_required(login_url=settings.LOGIN_URL)
+def ubah_challenge(request, id_challenge):
+    challenge = Challenge.objects.get(id=id_challenge)
+    template = 'ubah_challenge.html'
+    if request.POST:
+        form = FormChallenge(request.POST, request.FILES, instance=challenge)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Data Berhasil diperbaharui!")
+            return redirect('ubah_challenge', id_challenge=id_challenge)
+    else:
+        form = FormChallenge(instance=challenge)
+        context = {
+            'form':form,
+            'challenge':challenge,
+        }
+    return render(request, template, context)
 
 # Create your views here.

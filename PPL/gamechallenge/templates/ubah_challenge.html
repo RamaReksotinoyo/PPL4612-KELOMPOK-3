@@ -1,0 +1,36 @@
+{% include 'index.html' %}
+{% include 'index.html' %}
+{% block content %}
+
+<section class="page-section cta">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-9 mx-auto">  
+               <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                    <h3>Edit Data</h3>
+                    
+                    {% for message in messages %}
+                      {% if message %}
+                        <div class="alert alert-success">{{ message }}</div>
+                      {% endif %}
+                    {% endfor %}
+                    
+                    <form action="{% url 'ubah_challenge' challenge.id %}" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+              
+                      {{ form.as_p }}
+                    
+                      <button class="btn btn-primary">Simpan </button>
+                      <a href="{% url 'home' %}" class="btn btn-danger">Kembali</a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+{% endblock %}
