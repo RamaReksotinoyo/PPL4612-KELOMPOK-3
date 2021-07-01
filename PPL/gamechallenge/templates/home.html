@@ -1,4 +1,5 @@
 {% include 'index.html' %}
+{% load static %}
 
 {% block content %}
     {% if request.user.is_staff %}
@@ -10,7 +11,7 @@
                     <h5>Challenge:</h5>
                     <hr>
                     <a class="btn btn-outline-success  btn-sm btn-block" href="/tambah-challenge">Add</a>
-                    <a class="btn btn-outline-info  btn-sm btn-block" href="/edit_challenge">Update</a>
+                    <!-- <a class="btn btn-outline-info  btn-sm btn-block" href="/edit_challenge">Update</a> -->
                 </div>
             </div>
         
@@ -104,30 +105,91 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-9 mx-auto">
+                        <div class="cta-inner bg-faded text-center rounded">
+                          <h2>Beranda</h2>
+                          <p>Cafe Game Challange merupakan platform para gamers untuk menguji nyali mereka dalam sebuah tantangan game yang seru dan menarik, disini mereka akan di adu dalam game untuk menghasilkan juara superior, tunggu apa lagi segera daftarkan dirimu dan menangkan pertandingannya!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+        
+        <section class="page-section clearfix">
+            <div class="container">
+                <table class="center">
+        <div class="row">
+            <div class="col-lg-3 mb-3">
+              <div class="card h-100">
+                <h4 class="card-header">News</h4>
+                <div class="card-body">
+                  <p class="card-text">Jadwal Final Lower Bracket dan Grand Final MPL Season 7</p>
+                  <p class="card-text">Genflix akan kembali berjumpa EVOS Legends pada final lower bracket yang digelar Minggu</p>
+                  <p class="card-text">Hasil Play-off MPL Season 7: Luar Biasa, Bigetron Melaju ke Grand Final!</p>
+                </div>
+                <div class="card-footer">
+                  <a href="/berita" class="btn btn-primary">Learn More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 mb-3">
+              <div class="card h-100">
+                <h4 class="card-header">Jadwal</h4>
+                <div class="card-body">
+                  <p class="card-text">Simak jadwal pertandingannya</p>
+                </div>
+                <div class="card-footer">
+                  <a href="/jadwal" class="btn btn-primary">Learn More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 mb-3">
+              <div class="card h-100">
+                <h4 class="card-header">Peringkat</h4>
+                <div class="card-body">
+                  <p class="card-text">Peter memimpin poin</p>
+                  <p class="card-text">Cleveland sebagai juru kunci</p>
+                </div>
+                <div class="card-footer">
+                  <a href="/peringkat" class="btn btn-primary">Learn More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 mb-3">
+                <div class="card h-100">
+                  <h4 class="card-header">Event</h4>
+                  <div class="card-body">
+                    <p class="card-text">Game Challange akan mengadakan event di tahun 2021</p>
+                  </div>
+                  <div class="card-footer">
+                    <a href="/home" class="btn btn-primary">Learn More</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </table> 
+        </div>
+        </section>
+
+        <section class="page-section cta">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
                         <table class="center">
-                        <th><div class="cta-inner bg-faded text-center rounded">
-                            <h2 class="section-heading mb-4">
-                                <span class="section-heading-upper">here</span>
-                                <span class="section-heading-lower">sponsor</span>
-                            </h2>
-                            
-                        </div></th>
-    
-                        <th><div class="cta-inner bg-faded text-center rounded">
-                            <h2 class="section-heading mb-4">
-                                <span class="section-heading-upper">here</span>
-                                <span class="section-heading-lower">sponsor</span>
-                            </h2>
-                            
-                        </div></th>
-    
-                        <td><div class="cta-inner bg-faded text-center rounded">
-                            <h2 class="section-heading mb-4">
-                                <span class="section-heading-upper">here</span>
-                                <span class="section-heading-lower">sponsor</span>
-                            </h2>
-                            
-                        </div></td>
+                            <th>
+                                <div class="cta-inner bg-faded text-center rounded">                            
+                                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'images/Rans.png' %}"/>                           
+                                </div>
+                            </th>
+                            <th>
+                                <div class="cta-inner bg-faded text-center rounded">                           
+                                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'images/J99.png' %}"/>                          
+                                </div>
+                            </th>                        
+                            <td>
+                                <div class="cta-inner bg-faded text-center rounded">                           
+                                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'images//AHHA.png' %}"/>                           
+                                </div>
+                            </td>
     
                         </table>
     
