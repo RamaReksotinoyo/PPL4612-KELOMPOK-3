@@ -158,4 +158,7 @@ def ubah_challenge(request, id_challenge):
         }
     return render(request, template, context)
 
+def uploadview(request):
+    return render(request, 'uploadview.html')
+
 # Create your views here.

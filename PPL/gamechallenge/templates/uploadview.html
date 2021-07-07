@@ -1,0 +1,21 @@
+{% include 'index.html' %}
+
+{% block content %}
+<section class="page-section clearfix">
+    <div class="container">
+        <table class="center">
+            
+            <th><div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper">Upload</span>
+                    {% if user.is_authenticated %}
+                        <span class="section-heading-lower">Hey {{ user }}, is the challenge over?</span>
+                    {% endif %}
+                </h2>
+
+                <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="/upload-challenge">Upload</a></div>
+            </div></th>
+        </table> 
+    </div>
+</section>
+{% endblock %}

@@ -37,7 +37,8 @@ urlpatterns = [
     path('tambah-challenge/', tambahChallenge, name='tambah-challenge'),
     path('home/hapus/<int:id_challenge>', hapus_challenge, name='hapus_challenge'),
     path('home/ubah/<int:id_challenge>', ubah_challenge, name='ubah_challenge'),
-    path('export/xls/', export_xls, name='export_xls')
+    path('export/xls/', export_xls, name='export_xls'),
+    path('uploadview/', uploadview, name='uploadview')
 ]
 
 if settings.DEBUG:

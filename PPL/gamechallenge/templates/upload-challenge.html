@@ -22,7 +22,7 @@
     </table> 
 </div> -->
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
       <div class="col-md-4">
         <h3>Upload Challenge</h3>
@@ -40,6 +40,33 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
+  <section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">  
+                 <div class="container">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <h3>Upload Challenge</h3>
+                      
+                      {% if pesan %}
+                      <div class="alert alert-success">{{ pesan }}</div>
+                    {% endif %}
+                    
+                    <form action="{% url 'upload-challenge' %}" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+              
+                      {{ form.as_p }}
+                    
+                      <button class="btn btn-primary">Upload Challenge</button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
 
 {% endblock %}

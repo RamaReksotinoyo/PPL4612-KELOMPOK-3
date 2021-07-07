@@ -59,6 +59,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href='/home'>Home</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href='/uploadview'>Upload</a></li>
+                        {% endif %}
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href='/jadwal'>Jadwal</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href='/peringkat'>Peringkat</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href='/berita'>Berita</a></li>
